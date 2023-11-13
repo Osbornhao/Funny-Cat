@@ -5,6 +5,9 @@ Funny Cat is a project for collecting answers from folks of your choice. Create 
 ---
 
 # Dev Doc
+## $\textcolor{#dd0000} Key documents!!$
+**!! READ [THIS](./data/README.md) !!**
+
 ## Usecase
 #### Create A Question
 + A user can create a question.
@@ -12,8 +15,6 @@ Funny Cat is a project for collecting answers from folks of your choice. Create 
 #### Access A Question
 + A user can use a search bar on the webpage to navigate to a certain question
 + Alternatively, the webpage will navigate the user to the question if they first created the question
-
-#### Check The Answers
 + Anyone who knows the question link can see all the answers 
 
 #### Answer A Question
