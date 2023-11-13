@@ -20,7 +20,8 @@
 
 ## http://host:port/<question_id> GET ![Not working](https://img.shields.io/badge/not_ready-red)
 **用法**：用于访问指定的问题 id 对应的问题页面
-**请求参数**：无
+**请求参数**：
++ question_id: string 类型，必选，是用户希望访问的问题的 id
 **成功例**：
 ```
 200, {

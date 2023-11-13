@@ -23,20 +23,45 @@ value: 是以下一种 object，array，string，True，False，数字 或 null�
 你应该了解基础的 HTTP 请求方法（如：GET POST SET DELETE）、 HTTP 响应状态码（如：403，404，433，500）。同时，你应该对 HTTP 访问控制（CORS）有一定了解，我们大概率会遇到它。
 
 ## 如何使用这个假后端？
-首先使用命令行安装 json-server，运行
+首先进入 vue 的项目中，data 文件夹应该放置在项目中最顶层的目录里，与 src、 public、 node_modules 等文件夹处于同一层级。
+
+在 vue 项目中打开命令行后，使用命令行/终端安装 json-server，运行
 ```shell
 npm install json-server
 ```
-安装完成后，启动 json-server 并且 watch 用作数据源的 json 文件
-```shell
-json-server --watch <your_data_path>
+安装完成后，打开 vue 项目中的 package.json, 在 "script" 中添加新的一行内容
+```json
+...
+"scripts": {
+...
+"serve": "json-server --watch ./data/fake_data.json",
+}
+...
 ```
-之后我们可以对 json-server 显示出的 url 发送 HTTP 请求并获得返回的数据了。
+然后在命令行中运行
+```shell
+npm run serve
+```
+至此 json-server 就能启动了。
 
-## 这个文件夹一定要叫做 data 吗？
+之后我们可以对 json-server 显示出的 url 发送 HTTP 请求并获得返回的数据了。
+我们可以发送如下请求
+```
+GET    /questions       访问全部的问题
+GET    /questions/<id>  访问指定 id 的问题
+POST   /questions       创建新的问题，将自动生成 id
+PUT    /questions/<id>  更新指定 id 的问题的内容
+PATCH  /questions/<id>  更新指定 id 的问题的内容  
+DELETE /questions/<id>  删除指定 id 的问题
+```
+如你所见，json-server 已经能满足一些项目的后端需求。
+**注意**：由于 json-server 并不是这个项目的真正的后端实现，因此使用它的方式将会与我们的 API 有些差别，请以我们的 API 为准。
+
+## 这个文件夹一定要叫做 data 吗？一定要放在特定位置吗？
 不一定，它也可以被叫做 dog，foo，“新建文件夹” 或者其他的什么东西，叫做 data 为了方便理解其中的内容是用作测试的数据。
 同理，fake_data.json 也不一定要叫做 “fake_data”。
 只要 json-server 能 watch 一个 json 文件就好。
+这个文件夹也不一定要放在这个位置，由于方便管理项目的原因，推荐放在与 src 同级的目录下。
 
-## 我们的数据如何传递？
-参见 [API.md](./api.md)
+## 我们的真数据如何传递？
+参见 [API.md](../api.md)
