@@ -5,7 +5,7 @@ Funny Cat is a project for collecting answers from folks of your choice. Create 
 ---
 
 # Dev Doc
-## $\textcolor{#dd0000} Key documents!!$
+## Key documents!!
 **!! READ [THIS](./data/README.md) !!**
 
 ## Usecase
