@@ -6,7 +6,7 @@ Funny Cat is a project for collecting answers from folks of your choice. Create 
 
 # Dev Doc
 ## Key documents!!
-**!! READ [THIS](./data/README.md) !!**
+**!! read [The README file in ./data](./data/README.md) !!**
 
 ## Usecase
 #### Create A Question
