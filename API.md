@@ -1,6 +1,6 @@
 # 真后端 API 接口说明
 
-## http://host:port/questions POST ![Done](https://img.shields.io/badge/not_ready-green)
+## http://host:port/questions POST ![Done](https://img.shields.io/badge/Done-green)
 **用法**：用于创建一个新的问题，成功时将返回新创建的问题。失败时将返回带有 `"message"` 的 json 字符串以报告问题，错误细节（如有）将在 `"errors"` 中报告。
 
 **头**： Content-Type:application/json
@@ -41,7 +41,7 @@
 } # 400
 ```
 
-## http://host:port/questions/<question_id> GET ![Done](https://img.shields.io/badge/not_ready-green)
+## http://host:port/questions/<question_id> GET ![Done](https://img.shields.io/badge/Done-green)
 **用法**：获取 question_id 指定的问题及其下全部答案，成功时将返回查询到的问题及答案。失败时将返回带有 `"message"` 的 json 字符串以报告问题。
 
 **头**： Content-Type:application/json
@@ -86,7 +86,7 @@ http://host:port/questions/23 # 访问 id 为 23 的问题
 } # 404
 ```
 
-## http://host:port/questions/<question_id> POST ![Done](https://img.shields.io/badge/not_ready-green)
+## http://host:port/questions/<question_id> POST ![Done](https://img.shields.io/badge/Done-green)
 **用法**：用于创建一个新的回答，成功时以 json 形式返回新创建的问题。失败时将返回带有 `"message"` 的 json 字符串以报告问题，错误细节（如有）将在 `"errors"` 中报告。
 
 **头**： Content-Type:application/json
@@ -140,7 +140,7 @@ http://host:port/questions/23 # 回答 id 为 23 的问题
 } # 400
 ```
 
-## http://host:port/answers/<answers_id> PUT ![Done](https://img.shields.io/badge/not_ready-green)
+## http://host:port/answers/<answers_id> PUT ![Done](https://img.shields.io/badge/Done-green)
 **用法**：用于更新一个现有的回答，成功时以 json 形式返回修改后的问题。失败时将返回带有 `"message"` 的 json 字符串以报告问题，错误细节（如有）将在 `"errors"` 中报告。
 
 **头**： Content-Type:application/json
