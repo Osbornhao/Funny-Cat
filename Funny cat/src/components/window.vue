@@ -1,4 +1,25 @@
 <script setup>
+import {ref} from "vue";
+const Question = ref();//保存用户输入
+
+import {QuestionResponse}  from '@/Cache'
+
+import axios from "axios";
+import router from "@/router";
+function postUserQuestion(){
+  axios.post('/api/questions', {
+    "question": Question.value
+  })
+      .then(function (response) {
+        console.log(response);
+        console.log(response.data);
+        QuestionResponse.value = response.data;
+        router.push('/Answer');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+}
 
 </script>
 
@@ -9,10 +30,10 @@
     My question is:
   </div>
 
-  <textarea name="textarea" rows="10" cols="50" class="text-area"></textarea>
+  <textarea name="textarea" rows="100" cols="100" class="text-area" v-model="Question"></textarea>
 
 <br>
-  <button  type="button" class="ask-button">
+  <button @click="postUserQuestion  "  type="button" class="ask-button">
     <div class="ask-button-text" >
       Ask
     </div>
@@ -25,9 +46,12 @@
 
 <style scoped>
 .text1{
-  font-size: 36px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 700;
+  margin-left: 20rem;
+  margin-top: 10rem;
+  color:#443D6B ;
 }
 
 .ask-button {
@@ -70,7 +94,7 @@
 .text-area{
   width: 40vw;
   height: 3vh;
-  margin-left: 30rem;
-  margin-top: -3rem;
+  margin-left: 40rem;
+  margin-top: 20rem;
 }
 </style>

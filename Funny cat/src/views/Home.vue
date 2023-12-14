@@ -22,8 +22,10 @@ function StartAsk(){
 
   <Search class="search"></Search>
 
+  <div class="wire"></div>
+
   <window  v-show="Create"></window>
-<div class="wire"></div>
+
   <button @click="StartAsk" type="button" class="Create-button" >
     <div class="Create-button-text" >
       Create

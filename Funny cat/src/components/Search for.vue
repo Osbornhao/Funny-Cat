@@ -1,8 +1,26 @@
 <script setup>
 import router from "@/router";
-function answer(){
-  router.push('/Answer')
+import {QuestionResponse} from "@/Cache";
 
+// function answer(){
+//   router.push('/Answer')
+// }
+
+import {ref} from "vue";
+const Question = ref();
+
+import axios from "axios";
+
+function getUserQuestionId(){
+  axios.get('/api/questions/'+Question.value)
+      .then(function (response) {
+        console.log(response);
+        QuestionResponse.value= response.data
+        router.push('/Answer')
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 }
 
 </script>
@@ -13,17 +31,15 @@ function answer(){
     Let's check question id:
   </p>
 
-  <input type="text" class="input"/>
+  <input type="text" class="input" v-model="Question"/>
 
   <br>
-  <button @click="answer" type="button" class="take-button">
+  <button @click="getUserQuestionId" type="button" class="take-button">
     <div class="take-button-text" >
       Take me
     </div>
     <!--    @click="emits('Create')"-->
   </button>
-
-
 
 </div>
 </template>
