@@ -16,43 +16,30 @@ const Enter =ref();
 const ChangeAnswer = ref("My answer is:");
 const logined =ref(false);
 const AqwShow = ref(false);
+const matchedAnswer = ref("")
+const matchedAnswerID = ref()
 
 function moveFocus(){
   Enter.value.focus()
 }
 function text1(){
   alert(md5('Message to hash'))
-  console.log(md5('Message to hash'))
+  console.log(md5('Message to hash').substr(8,16))
   let hashedPassword = md5(Password.value)
   localStorage.setItem("Username",Username.value)
   localStorage.setItem("Password",hashedPassword)
-  let tokenPassword = md5(Username.value+hashedPassword)
+  let tokenPassword = md5(Username.value+hashedPassword.substr(8,16))
   for (var i=0;i<QuestionResponse.value.answers.length;i++)
   {
     if (QuestionResponse.value.answers[i].access_token === tokenPassword){
         logined.value = true;
         ChangeAnswer.value = "Update your answer";
+        matchedAnswer.value = QuestionResponse.value.answers[i].answer
+        matchedAnswerID.value = QuestionResponse.value.answers[i].id
         return;
     }
   }
   logined.value= true;
-}
-
-function postUserAnswer(){
-  axios.post('/api/questions/'+QuestionResponse.id, {
-    "username": Username.value,
-    "password": Password.value,
-    "answer": Answer.value
-  })
-      .then(function (response) {
-        console.log(response);
-        console.log(response.data);
-        QuestionResponse.value = response.data;
-        router.push('/Answer');
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
 }
 
 function logout(){
@@ -75,10 +62,13 @@ function answerQuestion(){
     <p class="title-text1">
       FUNNY CAT
     </p>
+
     <div class="search-input">search</div>
 
     <QuestionSection>
     </QuestionSection>
+
+
 
     <div class="text-answer">
       <div v-for="answer_element in QuestionResponse.answers">
@@ -107,7 +97,9 @@ function answerQuestion(){
       <p class="title-text2">
         Hi,{{Username}}
       </p>
-      <AnswerQuestionWindow v-show="AqwShow"></AnswerQuestionWindow>
+
+      <AnswerQuestionWindow v-show="AqwShow" :foo="matchedAnswer" :id="matchedAnswerID"></AnswerQuestionWindow>
+
       <button @click="answerQuestion" type="button" class="login-button" >
         {{ChangeAnswer}}
       </button>
